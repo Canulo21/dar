@@ -335,12 +335,8 @@ app.get("/LandOwner/Arbs/:id", (req, res) => {
         .status(500)
         .json({ error: "Internal Server Error", details: err.message });
     } else {
-      if (result.length === 0) {
-        res.status(404).json({ error: "No ARBs found" });
-      } else {
-        // Send all the ARBs data back to the client
-        res.status(200).json(result);
-      }
+      // Send all the ARBs data back to the client
+      res.status(200).json(result);
     }
   });
 });
