@@ -19,6 +19,9 @@ function ArbsDetails() {
   // get Id From SingleArbs
   const location = useLocation();
   const getId = location.state.id;
+  const getCloa = location.state.getLandOwnerCloa;
+
+  console.log("id", getId);
 
   const navigate = useNavigate();
   const goBack = () => {
@@ -117,8 +120,7 @@ function ArbsDetails() {
             whileInView={"show"}
             viewport={{ once: true, amount: 0.3 }}>
             <p className="uppercase text-white font-semibold text-3xl italic text-center">
-              {" "}
-              {getArb.length > 0 ? getArb[0].landowner_cloa_title_no : ""}
+              {getCloa}
             </p>
           </motion.div>
         </div>

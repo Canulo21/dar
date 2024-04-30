@@ -17,13 +17,27 @@ function SingleArbs(props) {
   };
 
   useEffect(() => {
+    const fetchLandOnwer = async () => {
+      try {
+        const res = await axios.get(
+          `http://localhost:8080/viewLandOwner/${id}`
+        );
+        console.log("data here", res.data.landowner_cloa_title_no);
+        setGetLandOwnerCloa(res.data.landowner_cloa_title_no);
+      } catch (err) {}
+    };
+
+    fetchLandOnwer();
+  }, [id]);
+
+  useEffect(() => {
     const fetchArbs = async () => {
       try {
         const res = await axios.get(
           `http://localhost:8080/LandOwner/Arbs/${id}`
         );
+        console.log("data here", res);
         const total = res.data.length;
-        setGetLandOwnerCloa(res.data[0].landowner_cloa_title_no);
         setTotalArbs(total);
       } catch (err) {
         console.log(err);
